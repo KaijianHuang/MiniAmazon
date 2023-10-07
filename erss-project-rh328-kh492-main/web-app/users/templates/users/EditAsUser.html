@@ -1,0 +1,34 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="media-body">
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            
+            <button class="btn btn-outline-info" type="submit"> Confrim Changes </button>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                <a class="ml-2" href="{% url 'profile' %}">Back</a>
+            </small>
+        </div>
+    </div>
+{% endblock content%}
+{% block sidebar %}
+<div class="col-md-4">
+    <div class="content-section">
+    <h3>Menu</h3>
+    <p class='text-muted'>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-light"><a href="{% url 'profile' %}">Personal info</a></li>
+            <li class="list-group-item list-group-item-light"><a href="{% url 'profile' %}">Create a ride request</a></li>
+            <li class="list-group-item list-group-item-light"><a href="{% url 'profile' %}">Search for a ride share</a></li>
+            <li class="list-group-item list-group-item-light"><a href="{% url 'profile' %}">View my rides</a></li>
+            <li class="list-group-item list-group-item-light"><a href="{% url 'profile' %}">View confirmed rides</a></li>
+        </ul>
+    </p>
+    </div>
+</div>
+{% endblock %}

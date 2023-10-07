@@ -1,0 +1,59 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="row-sm-2">
+			<div class="card mt-5">
+				<div class="card-body">
+					<h4 class="card-title">Username: <strong>{{ user.username }}</strong></h4>
+					<h4 class="card-title">Name: {{ user.first_name }} {{ user.last_name }}</h4>
+					<h4 class="card-title">Email: {{ user.email }}</h4>
+					<div class="d-flex justify-content-between align-items-center mt-3">
+						<div class="btn-group">
+							<a href='{% url "editasuser"%}' class="btn btn-sm btn-outline-secondary">Edit Profile</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card mt-5">
+				<div class="card-body">
+					<div class="optional-info">
+						{% if useraccount_initialized %}
+						<p><strong>Optional Info:</strong></p>
+						<p>Phone: {{ useraccount.phone }}</p>
+						<p>Credit card: {{ useraccount.cardInfo }}</p>
+						<p>ups_id: {{ useraccount.ups_userid }}</p>
+						<a href="{% url 'editoptional' %}">Edit optional info</a>
+						{% else %}
+						<a href="{% url 'editoptional' %}">Input phone, card, and ups username</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="addresses mt-3">
+				<h5><strong>Addresses:</strong></h5>
+				{% if addresses %}
+				{% for address in addresses %}
+				<article class="media content-section">
+					<div class="media-body">
+						<div class="article-metadata">
+							<p class="mr-2"><strong>{{ address.addressName }}</strong></p>
+						</div>
+						<p>Tag: {{address.tag}}</p>
+						<p>Location: ({{ address.address_x }},{{ address.address_y }})</p>
+					</div>
+				</article>
+				{% endfor %}
+				<a class="ml-2" href="{% url 'addaddress' %}">Add a new Address</a>
+				{% else %}
+				<a class="ml-2" href="{% url 'addaddress' %}">Add a new Address</a>
+				{% endif %}
+			</div>
+		</div>
+		
+{% endblock %}
+

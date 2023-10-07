@@ -1,0 +1,18 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-outline-info" type="submit"> Change </button>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                <a class="ml-2" href="{% url 'orders' %}">Cancel</a>
+            </small>
+        </div>
+    </div>
+
+\
+{% endblock content%}

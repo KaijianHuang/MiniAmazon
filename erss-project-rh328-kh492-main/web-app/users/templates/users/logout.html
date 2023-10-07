@@ -1,0 +1,12 @@
+{% extends "users/base.html" %}
+{% block content %}
+<div class="media-body">
+    <h2>You have been logged out successfully!</h2>    
+    <div class="media-body">
+        <button class="btn btn-outline-info">
+            <a href="{% url 'login' %}">Log In</a>
+        </button>
+    </div>
+    <p></p>
+</div>
+{% endblock content%}

@@ -1,0 +1,12 @@
+Danger Log
+1. when we are doing shopping cart function, the product in each cart may contain different ups_id and addresses
+    SOlVED: 
+2. Shipid cannot be successfully added to google protocal buffer. 
+    SOLVED: We found that it is because the corresponding 
+   packages are not filtered correctly. It is because the status 
+   which is sent from world is all in captital letters 
+   but we were using all lowercase letters.
+
+3. A response from world cannot be received. 
+    SOLVED: We solved it by deleting a receive message at the wrong place. 
+   It was received by another receive function.

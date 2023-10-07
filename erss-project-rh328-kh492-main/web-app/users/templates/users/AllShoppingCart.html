@@ -1,0 +1,22 @@
+{% extends "users/base.html" %}
+{% block content %}
+<h1>Shopping Cart</h1>
+    {% if Carts %}
+        {% for item in Carts %}
+            <article class="media content-section">
+                <div class="media-body">
+                    <p><strong>{{ item.product.description }}</strong> </p>
+                    <p>Product Number: {{ item.product_num }}</p>
+                    <p>Deliver to: ({{ item.address_x }},{{ item.address_y }})</p>
+                    <a href="{% url 'cancelCart' product_id=item.cart_id%}">delete this item</a>
+
+                </div>
+            </article>
+        {% endfor %}
+        <a href='{% url "buyShoppingCart"%}' class="btn btn-sm btn-outline-secondary">Buy All</a>
+
+    {% else %}
+        <p>You don't have any product in your cart yet!</p>
+        <a class="nav-item nav-link" href="{% url 'products' %}">Go buy some!</a>
+    {% endif %}
+    {% endblock content%}

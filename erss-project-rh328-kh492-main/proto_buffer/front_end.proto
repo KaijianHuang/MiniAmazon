@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+message FPlaceOrder {
+    required int64 packageid = 1;
+}
+
+message FAssociate {
+    required string userid = 1;
+    required int64 packageid = 2;
+}
+
+message FCommands {
+    optional FPlaceOrder buy = 1;
+    optional FAssociate associate = 2;
+}
+
+message BResponses {
+    required bool isValid = 1;
+} 
